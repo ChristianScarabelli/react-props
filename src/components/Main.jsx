@@ -9,17 +9,24 @@ export default function Main() {
                     <h1 className='page-title'>Il mio blog</h1>
                 </div>
                 <div className='container'>
-                    {
-                        posts.length !== 0 ?
-                            <div className="row">
-                                {posts.map((post) => (
+                    {posts.length ? ( // Se ci sono post
+                        <div className="row">
+                            {posts.map((post) =>
+                                post.published ? ( // se published è settata a true,mostro solo i post pubblicati
                                     <div key={post.id} className="col-6">
-                                        <Card image={post.image} title={post.title} tags={post.tags} content={post.content} />
+                                        <Card
+                                            image={post.image}
+                                            title={post.title}
+                                            tags={post.tags}
+                                            content={post.content}
+                                        />
                                     </div>
-                                ))}
-                            </div> :
-                            <p>No posts available</p>
-                    }
+                                ) : null // altrimenti non mostra nulla per i non pubblicati
+                            )}
+                        </div>
+                    ) : (
+                        <p>No posts available</p> // Se l'array `posts` è vuoto
+                    )}
                 </div>
             </main>
         </>
