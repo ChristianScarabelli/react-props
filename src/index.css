@@ -17,6 +17,7 @@ ol {
 
 img {
   max-width: 100%;
+  aspect-ratio: 4/3;
   display: block;
 }
 
@@ -35,7 +36,7 @@ img {
 }
 
 main {
-  background-color: rgb(229, 226, 226);
+  background-color: rgb(244, 244, 244);
   padding-bottom: 100px;
 }
 
