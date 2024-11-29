@@ -11,6 +11,8 @@ export default function Main() {
             }
         }
     }
+
+    const publishedPosts = posts.filter((post) => post.published === true) // meglio fare con filter, per fare poi meno iterazioni dopo
     return (
         <>
             <main>
@@ -19,19 +21,17 @@ export default function Main() {
                         <h1 className='page-title'>Il mio blog</h1>
                     </div>
                     <div className='container'>
-                        {posts.length ? ( // Se ci sono post
+                        {publishedPosts.length ? ( // Se ci sono post
                             <div className="row">
-                                {posts.map((post) =>
-                                    post.published ? ( // se published è settata a true,mostro solo i post pubblicati
-                                        <div key={post.id} className="col-6">
-                                            <Card
-                                                image={post.image}
-                                                title={post.title}
-                                                tags={post.tags}
-                                                content={post.content}
-                                            />
-                                        </div>
-                                    ) : null // altrimenti non mostra nulla per i non pubblicati
+                                {publishedPosts.map((post) =>
+                                    <div key={post.id} className="col-6">
+                                        <Card
+                                            image={post.image}
+                                            title={post.title}
+                                            tags={post.tags}
+                                            content={post.content}
+                                        />
+                                    </div>
                                 )}
                             </div>
                         ) : (
